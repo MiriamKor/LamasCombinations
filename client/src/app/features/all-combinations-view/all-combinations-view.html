@@ -1,0 +1,36 @@
+<mat-card class="card wide" appearance="outlined">
+  <div class="content">
+    <h1>כל הקומבינציות</h1>
+    <p>נותרו {{ remainingText() }} צירופים (מתוך {{ totalText() }})</p>
+
+    @if (error(); as err) {
+      <p class="error" role="alert">{{ err }}</p>
+    }
+
+    @if (loading()) {
+      <mat-progress-bar mode="indeterminate" />
+    }
+
+    @if (hasPages() && items().length === 0 && !loading()) {
+      <button mat-flat-button type="button" (click)="load(firstPage)">הצג צירופים</button>
+    }
+
+    @if (hasPages() && items().length > 0) {
+      <app-paginator
+        [page]="page()"
+        [totalPages]="totalPages()"
+        [pageSize]="pageSize()"
+        (pageChange)="load($event)"
+        (pageSizeChange)="changeSize($event)"
+      />
+      <mat-divider />
+      <ul class="list" [attr.aria-busy]="loading()">
+        @for (item of items(); track item.index) {
+          <li><app-combination-display [values]="item.values" [index]="item.index" /></li>
+        }
+      </ul>
+    }
+
+    <button mat-stroked-button type="button" (click)="back()">חזור</button>
+  </div>
+</mat-card>

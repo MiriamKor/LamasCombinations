@@ -1,0 +1,5 @@
+﻿<Solution>
+  <Project Path="Combinations.Core/Combinations.Core.csproj" />
+  <Project Path="Combinations.Infrastructure/Combinations.Infrastructure.csproj" />
+  <Project Path="Combinations/Combinations.csproj" />
+</Solution>

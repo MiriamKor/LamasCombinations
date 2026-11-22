@@ -1,0 +1,3 @@
+.combination { display: flex; gap: 1rem; align-items: baseline; justify-content: center; }
+.idx { color: var(--mat-sys-on-surface-variant); font-size: 0.9rem; }
+.values { font-size: 1.4rem; font-weight: 600; letter-spacing: 0.05em; word-break: break-word; }

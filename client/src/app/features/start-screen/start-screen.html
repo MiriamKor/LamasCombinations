@@ -1,0 +1,26 @@
+<mat-card class="card" appearance="outlined">
+  <div class="content">
+    <h1>מחולל צירופים</h1>
+    <mat-form-field appearance="outline">
+      <mat-label>הכנס מספר בין 1 ל-20</mat-label>
+      <input
+        matInput
+        id="n"
+        type="number"
+        min="1"
+        max="20"
+        step="1"
+        [ngModel]="value()"
+        (ngModelChange)="value.set($event)"
+        (keyup.enter)="start()"
+      />
+    </mat-form-field>
+    @if (invalid()) {
+      <p class="error" role="alert">יש להזין מספר שלם בין 1 ל-20</p>
+    }
+    @if (store.error(); as err) {
+      <p class="error" role="alert">{{ err }}</p>
+    }
+    <button mat-flat-button type="button" (click)="start()" [disabled]="store.loading()">התחל</button>
+  </div>
+</mat-card>

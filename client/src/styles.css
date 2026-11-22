@@ -1,0 +1,7 @@
+.card { width: 100%; max-width: 480px; text-align: center; }
+.card.wide { max-width: 900px; }
+.card mat-card-content, .card .content { display: flex; flex-direction: column; gap: 1rem; padding: 1.5rem; }
+h1 { margin: 0; font: var(--mat-sys-headline-small); }
+.actions { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
+.error { color: var(--mat-sys-error); margin: 0; }
+.info { color: var(--mat-sys-on-surface-variant); margin: 0; }

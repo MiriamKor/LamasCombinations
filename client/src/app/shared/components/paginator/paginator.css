@@ -1,0 +1,5 @@
+.paginator { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; justify-content: center; }
+.jump { display: inline-flex; gap: 0.4rem; align-items: center; }
+.jump mat-form-field { width: 8rem; }
+.size { width: 6.5rem; }
+.count { color: var(--mat-sys-on-surface-variant); }

@@ -1,0 +1,38 @@
+<mat-card class="card" appearance="outlined">
+  <div class="content">
+    <h1>סה"כ צירופים: {{ totalText() }}</h1>
+    <p>n = {{ store.n() }}</p>
+
+    <div class="actions">
+      <button mat-stroked-button type="button" (click)="newGame()">איפוס</button>
+      <button
+        mat-flat-button
+        type="button"
+        (click)="store.back()"
+        [disabled]="store.loading() || !store.canGoBack()"
+      >
+        חזור
+      </button>
+      <button
+        mat-flat-button
+        type="button"
+        (click)="store.next()"
+        [disabled]="store.loading() || store.exhausted()"
+      >
+        הבא
+      </button>
+      <button mat-stroked-button type="button" (click)="showAll()" [disabled]="store.exhausted()">
+        כל הקומבינציות
+      </button>
+    </div>
+
+    @if (store.lastCombination(); as c) {
+      <app-combination-display [values]="c" [index]="store.lastIndex()" />
+    }
+    @if (store.error(); as err) {
+      <p class="error" role="alert">{{ err }}</p>
+    } @else if (store.exhausted()) {
+      <p class="info">הגעת לצירוף האחרון</p>
+    }
+  </div>
+</mat-card>

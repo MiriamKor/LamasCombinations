@@ -1,0 +1,6 @@
+@Combinations_HostAddress = http://localhost:5100
+
+GET {{Combinations_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

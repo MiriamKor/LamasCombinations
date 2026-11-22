@@ -1,0 +1,46 @@
+<nav class="paginator" aria-label="דפדוף">
+  <button mat-stroked-button type="button" (click)="go(first)" [disabled]="isFirst()">ראשון</button>
+  <button mat-stroked-button type="button" (click)="go(prev())" [disabled]="isFirst()">הקודם</button>
+
+  @for (p of pages(); track p) {
+    <button
+      [matButton]="p === page() ? 'filled' : 'outlined'"
+      type="button"
+      [class.active]="p === page()"
+      [attr.aria-current]="p === page() ? 'page' : null"
+      (click)="go(p)"
+    >
+      {{ format(p + one) }}
+    </button>
+  }
+
+  <button mat-stroked-button type="button" (click)="go(nextPage())" [disabled]="isLast()">הבא</button>
+  <button mat-stroked-button type="button" (click)="go(last())" [disabled]="isLast()">אחרון</button>
+
+  <span class="jump">
+    <mat-form-field appearance="outline" subscriptSizing="dynamic">
+      <mat-label>עמוד</mat-label>
+      <input
+        matInput
+        id="jump"
+        type="text"
+        inputmode="numeric"
+        [value]="jumpText()"
+        (input)="jumpText.set($any($event.target).value)"
+        (keyup.enter)="jump()"
+      />
+    </mat-form-field>
+    <button mat-flat-button type="button" (click)="jump()">עבור</button>
+  </span>
+
+  <mat-form-field class="size" appearance="outline" subscriptSizing="dynamic">
+    <mat-label>בעמוד</mat-label>
+    <mat-select [value]="pageSize()" (selectionChange)="pageSizeChange.emit($event.value)">
+      @for (s of sizes; track s) {
+        <mat-option [value]="s">{{ s }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <span class="count">עמוד {{ currentLabel() }} מתוך {{ format(totalPages()) }}</span>
+</nav>

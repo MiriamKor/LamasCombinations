@@ -1,0 +1,36 @@
+﻿# Build output
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+publish/
+*.dll
+*.pdb
+*.exe
+
+# Tests project (not up to date - not uploaded)
+CombinationsTests/
+
+# Test results
+TestResults/
+*.trx
+coverage/
+
+# IDE
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.rsuser
+
+# Angular / Node
+node_modules/
+dist/
+.angular/
+npm-debug.log*
+
+# Local tooling / OS
+.claude/
+Thumbs.db
+.DS_Store
